@@ -1794,7 +1794,7 @@ func (p *Plugin) createIssue(c *UserContext, w http.ResponseWriter, r *http.Requ
 			return
 		}
 
-		amMessage = fmt.Sprintf("_Issue created from a [Antimatter message](%v) *by %s*._", permalink, username)
+		amMessage = fmt.Sprintf("_Issue created from an [Antimatter message](%v) *by %s*._", permalink, username)
 	}
 
 	ghIssue := &github.IssueRequest{
