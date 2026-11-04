@@ -55,7 +55,10 @@ jobs:
         ports:
           - 9200:9200
       mattermost-server:
-        image: mattermost/mattermost-enterprise-edition:master
+        # Public, no login needed (AntimatterChat/antimatter-docker publishes
+        # it as a public GHCR package); tracks main across every repo, the
+        # closest equivalent to upstream's :master.
+        image: ghcr.io/antimatterchat/antimatter:latest
         env:
           DB_HOST: postgres
           DB_PORT_NUMBER: 5432
@@ -164,7 +167,7 @@ jobs:
           mkdir results
           mv playwright-report results
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         if: success() || failure()
         with:
           name: test-results
