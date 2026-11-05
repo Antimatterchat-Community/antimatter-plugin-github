@@ -29,12 +29,6 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-      minio:
-        image: minio/minio:RELEASE.2019-10-11T00-38-09Z
-        env:
-          MINIO_ACCESS_KEY: minioaccesskey
-          MINIO_SECRET_KEY: miniosecretkey
-          MINIO_SSE_MASTER_KEY: "my-minio-key:6368616e676520746869732070617373776f726420746f206120736563726574"
       inbucket:
         image: mattermost/inbucket:release-1.2.0
         ports:
@@ -67,7 +61,6 @@ jobs:
           MM_PASSWORD: mostest
           CI_INBUCKET_HOST: inbucket
           CI_INBUCKET_PORT: 10080
-          CI_MINIO_HOST: minio
           IS_CI: true
           MM_CLUSTERSETTINGS_READONLYCONFIG: false
           MM_EMAILSETTINGS_SMTPSERVER: inbucket
